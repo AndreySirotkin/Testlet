@@ -12,39 +12,39 @@ namespace Testlet.UnitTests.Service
         #region items
         private List<Item> _items = new List<Item>() {
                 new Item {
-                    ItemId = "1",
+                    ItemId = "01",
                     ItemType = ItemTypeEnum.Operational,
                 },
                 new Item {
-                    ItemId = "2",
+                    ItemId = "02",
                     ItemType = ItemTypeEnum.Operational,
                 },
                 new Item {
-                    ItemId = "3",
+                    ItemId = "03",
                     ItemType = ItemTypeEnum.Operational,
                 },
                 new Item {
-                    ItemId = "4",
+                    ItemId = "04",
                     ItemType = ItemTypeEnum.Operational,
                 },
                 new Item {
-                    ItemId = "5",
+                    ItemId = "05",
                     ItemType = ItemTypeEnum.Operational,
                 },
                 new Item {
-                    ItemId = "6",
+                    ItemId = "06",
                     ItemType = ItemTypeEnum.Operational,
                 },
                 new Item {
-                    ItemId = "7",
+                    ItemId = "07",
                     ItemType = ItemTypeEnum.Pretest,
                 },
                 new Item {
-                    ItemId = "8",
+                    ItemId = "08",
                     ItemType = ItemTypeEnum.Pretest,
                 },
                 new Item {
-                    ItemId = "9",
+                    ItemId = "09",
                     ItemType = ItemTypeEnum.Pretest,
                 },
                 new Item {
@@ -58,6 +58,15 @@ namespace Testlet.UnitTests.Service
         public void SetUp()
         {
             _testlet = new TestletSevice("id", _items);
+        }
+
+        [Test]
+        public void Is_All_Items()
+        {
+            var result = _testlet.Randomize();
+            var ids = string.Join("", result.OrderBy(i => i.ItemId).Select(i => i.ItemId));
+            var origIds = string.Join("", _items.Select(i => i.ItemId));
+            Assert.AreEqual(origIds, ids, "Not all items returned");
         }
 
         [Test]

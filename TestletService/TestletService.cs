@@ -11,6 +11,18 @@ namespace Testlet.Service
 
         public TestletSevice(string testletId, List<Item> items)
         {
+            if (items == null)
+            {
+                throw new ArgumentNullException("items");
+            }
+            if (items.Count != 10)
+            {
+                throw new ArgumentException("10 items expected");
+            }
+            if (items.Where(i => i.ItemType == ItemTypeEnum.Pretest).Count() != 4)
+            {
+                throw new ArgumentException("4 Pretest items expected");
+            }
             TestletId = testletId;
             Items = items;
         }
