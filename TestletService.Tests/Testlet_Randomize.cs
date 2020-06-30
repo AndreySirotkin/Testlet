@@ -86,7 +86,6 @@ namespace Testlet.UnitTests.Service
         public void Is_First_Two_Items_Pretest()
         {
             var result = _testlet.Randomize();
-            var id = string.Join("", result.Select(i => i.ItemId));
             Assert.AreEqual(ItemTypeEnum.Pretest, result[0].ItemType, "First should be Pretest");
             Assert.AreEqual(ItemTypeEnum.Pretest, result[1].ItemType, "Second should be Pretest");
         }
